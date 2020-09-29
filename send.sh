@@ -76,7 +76,7 @@ WEBHOOK_DATA='{
   "embeds": [ {
     "color": '$EMBED_COLOR',
     "author": {
-      "name": "'"$STATUS_MESSAGE"': '"$WORKFLOW_NAME"' ('"${HOOK_OS_NAME}"') - '"$GITHUB_REPOSITORY"'",
+      "name": "'"$STATUS_MESSAGE"': '"$WORKFLOW_NAME"'",
       "url": "'$ACTION_URL'",
       "icon_url": "'$AVATAR'"
     },
@@ -98,6 +98,7 @@ WEBHOOK_DATA='{
     "timestamp": "'"$TIMESTAMP"'"
   } ]
 }'
+
 
 (curl --fail --progress-bar -A "GitHub-Actions-Webhook" -H Content-Type:application/json -H X-Author:k3rn31p4nic#8383 -d "${WEBHOOK_DATA//	/ }" "$2" \
   && echo -e "\\n[Webhook]: Successfully sent the webhook.") || echo -e "\\n[Webhook]: Unable to send webhook."
